@@ -13,7 +13,7 @@ type AppState = {
 type AppActions = {
   setSession: (value: Session) => void;
   setTokens: (accessToken: string, refreshToken: string) => void;
-  getSession: () => void;
+  getSession: () => Session | null;
   clearSession: () => void;
 };
 

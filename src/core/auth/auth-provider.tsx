@@ -11,10 +11,15 @@ type AuthServiceProviderProps = {
 
 export const { Injector, useDi: useAuthService } = createDi<AuthService>();
 
-export function AuthServiceProvider({ children, authRepo }: AuthServiceProviderProps) {
+export function AuthServiceProvider({
+  children,
+  authRepo,
+}: AuthServiceProviderProps) {
   const { setSession } = useAppStore();
 
-  const [authService] = useState(() => createAuthService({ authRepo, setSession }));
+  const [authService] = useState(() =>
+    createAuthService({ authRepo, setSession }),
+  );
 
   return <Injector value={authService}>{children}</Injector>;
 }
